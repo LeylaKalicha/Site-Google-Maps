@@ -86,18 +86,21 @@ header{
 
 <header>
 <h2>Nos Coordonnées</h2>
-<p>Email : contact@monsite.com </p>
+<p>Email : contact@monsite.com</p>
 <p>Nom : Njoya Soumiatou Leyla | Filière : Gestion des Systèmes d'Information (GSI)</p>
 </header>
 
-<!-- BOUTONS -->
 <div class="buttons">
   <button class="btn btn-yes" onclick="activerLocalisation()">
-    Se Localiser
+    Se Localiser (Tracking)
   </button>
 
   <button class="btn btn-no" onclick="refuserLocalisation()">
     Ne Pas Se Localiser
+  </button>
+
+  <button class="btn" onclick="arreterTracking()">
+    Arrêter le Tracking
   </button>
 </div>
 
@@ -114,11 +117,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
+let marker;
+let watchID;
+
 function activerLocalisation(){
 
   if(navigator.geolocation){
 
-    navigator.geolocation.getCurrentPosition(
+    watchID = navigator.geolocation.watchPosition(
+
       function(position){
 
         let lat = position.coords.latitude;
@@ -126,19 +133,38 @@ function activerLocalisation(){
 
         map.setView([lat,lng], 16);
 
-        L.marker([lat,lng])
-          .addTo(map)
-          .bindPopup("Vous êtes ici")
-          .openPopup();
+        if(marker){
+          marker.setLatLng([lat,lng]);
+        } else {
+          marker = L.marker([lat,lng])
+            .addTo(map)
+            .bindPopup("Vous êtes ici")
+            .openPopup();
+        }
 
       },
+
       function(error){
         alert("Erreur : " + error.message);
+      },
+
+      {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 5000
       }
+
     );
 
   } else {
     alert("La géolocalisation n'est pas supportée.");
+  }
+}
+
+function arreterTracking(){
+  if(watchID){
+    navigator.geolocation.clearWatch(watchID);
+    alert("Tracking arrêté.");
   }
 }
 
