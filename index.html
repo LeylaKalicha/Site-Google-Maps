@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP Intégration des Services 2</title>
+
+<style>
+
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#4facfe,#ffffff);
+  color:#333;
+  min-height:100vh;
+}
+
+/* ===== NAVBAR ===== */
+header{
+  background: rgba(0,0,0,0.8);
+  color:white;
+  padding:15px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#4facfe;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:50px auto;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  margin-bottom:30px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h2{
+  margin-bottom:20px;
+  color:#4facfe;
+}
+
+/* ===== INFO ===== */
+.info-item{
+  margin:10px 0;
+}
+
+.label{
+  font-weight:bold;
+  color:#4facfe;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  background:linear-gradient(135deg,#4facfe,#00f2fe);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* ===== SERVICES ===== */
+.services{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.service-card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  width:280px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.service-card:hover{
+  transform:scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:20px;
+  background:rgba(0,0,0,0.85);
+  color:white;
+  font-size:14px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:992px){
+
+  .services{
+    justify-content:center;
+  }
+
+}
+
+@media(max-width:768px){
+
+  header{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  nav{
+    margin-top:10px;
+    justify-content:center;
+  }
+
+  nav a{
+    margin:8px 10px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .service-card{
+    width:100%;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+
+@media(max-width:480px){
+
+  .container{
+    margin:30px auto;
+  }
+
+  .card{
+    padding:18px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>TP Intégration des Services 2</h2>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Présentation du Projet</h2>
+    <p>
+      Ce site web a été réalisé dans le cadre du TP d’Intégration des Services.
+       Il présente l'intégration de l'API Google Maps avec un système de géolocalisation en temps réel permettant à l'utilisateur de visualiser sa position actuelle sur une carte interactive.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Informations de l'étudiant</h2>
+
+    <div class="info-item">
+      <span class="label">Nom :</span>
+      Njoya Soumiatou Leyla
+    </div>
+
+    <div class="info-item">
+      <span class="label">Filière :</span>
+      Gestion des Systèmes d'Informations
+    </div>
+
+    <div class="info-item">
+      <span class="label">Niveau :</span>
+      BTS 2
+    </div>
+
+    <div class="info-item">
+      <span class="label">Établissement :</span>
+      Institut Universitaire de la Côte (IUC)
+    </div>
+    <div class="info-item">
+      <span class="label"> Enseignante :</span>
+      Mme DJOMFE
+    </div>
+
+    <a href="contact.html" class="btn">Nous Contacter</a>
+  </div>
+
+  <div class="card">
+    <h2>Nos Services</h2>
+
+    <div class="services">
+      <div class="service-card">
+        <h3>Géolocalisation</h3>
+        <p>Affichage en temps réel.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Cartes Interactives</h3>
+        <p>Intégration de cartes modernes.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Développement Web</h3>
+        <p>Sites professionnels responsives.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TP Intégration des Services 2 — Tous droits réservés.
+</footer>
+
+</body>
+</html>
